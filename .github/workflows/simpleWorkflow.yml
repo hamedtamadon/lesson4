@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      -main
-
+      - main
 
 jobs:
   my_self_hosted_job:
@@ -16,17 +15,18 @@ jobs:
         id: selfHostedId
         shell: cmd
         run: |
-            echo "This is multline comment"
-            echo "and this job has been executed on self-hosted runner"
-  a_simple_job : 
+          echo "This is multiline comment"
+          echo "and this job has been executed on self-hosted runner"
+
+  a_simple_job:
     name: my simple job name
     runs-on: ubuntu-latest
     steps:
       - name: name of my step
         id: stepId
         run: echo "this is the first step from the first job"
-      - name: step with another shell
+
+      - name: step with Python code
         id: shellstep
-        shell: python
-        run: print("this step using python shell")
-       
+        run: |
+          python -c "print('this step using python shell')"
